@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 use tokio::fs;
 use url::Url;
 
+use crate::ExtraArgs;
+
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DiffConfig {
     #[serde(flatten)]
@@ -53,16 +55,17 @@ impl DiffConfig {
     }
 }
 
-pub struct DiffArgs {}
-
 impl DiffProfile {
-    pub async fn diff(&self, _args: DiffArgs) -> anyhow::Result<String> {
+    pub async fn diff(&self, args: ExtraArgs) -> anyhow::Result<String> {
         // let res1 = self.req1.send(&args).await()?;
         // let res2 = self.req2.send(&args).await()?;
         // let text1 = res1.filter_text(&self.response).await()?;
         // let text2 = res2.filter_text(&self.response).await()?;
         //
         // text_diff(&text1, &text2);
+
+        println!("{:?}", self);
+        println!("{:?}", args);
         Ok("".to_string())
     }
 }
